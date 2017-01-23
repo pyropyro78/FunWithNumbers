@@ -1,0 +1,11 @@
+name: FunWithNumbers
+version: 0.0.1.0
+description: The goal of this plugin is to handle player stats.
+author: pyropyro78
+main: com.pyromanticgaming.funwithnumbers.FunWithNumbers
+commands:
+   fwn:
+      description: The goal of this plugin is to handle player stats.
+      usage: |
+        /fwn stats - Shows the stats of the sender.
+        /fwn stats [Player] - Shows the stats of the designated player.
