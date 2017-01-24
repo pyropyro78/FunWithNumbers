@@ -10,6 +10,7 @@ package com.pyromanticgaming.funwithnumbers;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class FWNCommandExecutor implements CommandExecutor {
 
@@ -26,9 +27,9 @@ public class FWNCommandExecutor implements CommandExecutor {
 
 			String senderstring = sender.getName();
 			
-			if (args.length > 0) {
+			if (args.length > 0 && sender.hasPermission("FunWithNumbers.*")) {
 				if (args[0].equalsIgnoreCase("stats")) {
-					if ((args.length == 1) && canCheckSelf) {
+					if ((args.length == 1) && canCheckSelf && sender instanceof Player) {
 						sender.sendMessage(MainConfig.pvpdeathbefore + NumberCruncher.deaths.get(senderstring) + MainConfig.pvpdeathafter);
 						sender.sendMessage(MainConfig.killbefore + NumberCruncher.kills.get(senderstring) + MainConfig.killafter);
 						sender.sendMessage(MainConfig.blockbbefore + NumberCruncher.blocksb.get(senderstring) + MainConfig.blockbafter);
@@ -70,6 +71,18 @@ public class FWNCommandExecutor implements CommandExecutor {
 					
 				}
 			}
+			if (sender instanceof Player) {
+			sender.sendMessage("FunWithNumbers - Improper command use");
+			sender.sendMessage("/fwn stats - Checks your stats");
+			sender.sendMessage("/fwn stats [Player] - Checks a player's stats");
+			return true;
+			} else {
+				sender.sendMessage("FunWithNumbers - Improper command use");
+				sender.sendMessage("------------------------------");
+				sender.sendMessage("Concolse Enabled Commands");
+				sender.sendMessage("/fwn stats [Player] - Checks a players stats");
+			}
+			
 		}
 		return true;
 	}
