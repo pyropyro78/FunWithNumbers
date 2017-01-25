@@ -30,11 +30,11 @@ public class FWNCommandExecutor implements CommandExecutor {
 			if (args.length > 0 && sender.hasPermission("FunWithNumbers.*")) {
 				if (args[0].equalsIgnoreCase("stats")) {
 					if ((args.length == 1) && canCheckSelf && sender instanceof Player) {
-						sender.sendMessage(MainConfig.pvpdeathbefore + NumberCruncher.deaths.get(senderstring) + MainConfig.pvpdeathafter);
-						sender.sendMessage(MainConfig.killbefore + NumberCruncher.kills.get(senderstring) + MainConfig.killafter);
-						sender.sendMessage(MainConfig.blockbbefore + NumberCruncher.blocksb.get(senderstring) + MainConfig.blockbafter);
-						sender.sendMessage(MainConfig.blockpbefore + NumberCruncher.blocksp.get(senderstring) + MainConfig.blockpafter);
-						sender.sendMessage(MainConfig.joinbefore + NumberCruncher.joins.get(senderstring) + MainConfig.joinafter);
+						sender.sendMessage(MainConfig.pvpdeathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.deaths.get(senderstring) + MainConfig.pvpdeathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+						sender.sendMessage(MainConfig.killbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.kills.get(senderstring) + MainConfig.killafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+						sender.sendMessage(MainConfig.blockbbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksb.get(senderstring) + MainConfig.blockbafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+						sender.sendMessage(MainConfig.blockpbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksp.get(senderstring) + MainConfig.blockpafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+						sender.sendMessage(MainConfig.joinbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.joins.get(senderstring) + MainConfig.joinafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 						
 						Integer PlayTimeSec = NumberCruncher.playtime.get(senderstring);
 						Integer PlayTimeHour = (int) (Math.floor(PlayTimeSec / 60) / 60); // gets hours rounds down
@@ -42,7 +42,7 @@ public class FWNCommandExecutor implements CommandExecutor {
 						Integer PlayTimeMin = (int) Math.floor(PlayTimeSec / 60); // gets min rounds down
 						PlayTimeSec = PlayTimeSec - (PlayTimeMin * 60); // subtracts mins seconds
 						
-						String PlayTime = PlayTimeHour + " : " + PlayTimeMin + " : " + PlayTimeSec;
+						String PlayTime = PlayTimeHour + MainConfig.timeseporator + PlayTimeMin + MainConfig.timeseporator + PlayTimeSec;
 						
 						sender.sendMessage(MainConfig.timebefore + PlayTime + MainConfig.timeafter);
 						return true;
@@ -62,7 +62,7 @@ public class FWNCommandExecutor implements CommandExecutor {
 							Integer PlayTimeMin = (int) Math.floor(PlayTimeSec / 60); // gets min rounds down
 							PlayTimeSec = PlayTimeSec - (PlayTimeMin * 60); // subtracts mins seconds
 							
-							sender.sendMessage(MainConfig.timebefore + PlayTimeHour + " : " + PlayTimeMin + " : " + PlayTimeSec + MainConfig.timeafter);
+							sender.sendMessage(MainConfig.timebefore + PlayTimeHour + MainConfig.timeseporator + PlayTimeMin + MainConfig.timeseporator + PlayTimeSec + MainConfig.timeafter);
 							return true;
 						}
 						sender.sendMessage(MainConfig.playernotfound);

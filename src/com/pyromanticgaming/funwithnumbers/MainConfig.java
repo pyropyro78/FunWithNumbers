@@ -16,11 +16,12 @@ public class MainConfig {
 	}
 	
 	public static long SaveTimer = 200;
-	public static String playernotfound = " ", killbefore = " ", killafter = " ", timebefore = " ", timeafter = " ", blockpbefore = " ", blockpafter = " ", blockbbefore = " ", blockbafter = " ", joinbefore = " ", joinafter = " ", pvpdeathbefore = " ", pvpdeathafter = " ";
+	public static String playernotfound = " ", timeseporator = " ", killbefore = " ", killafter = " ", timebefore = " ", timeafter = " ", blockpbefore = " ", blockpafter = " ", blockbbefore = " ", blockbafter = " ", joinbefore = " ", joinafter = " ", pvpdeathbefore = " ", pvpdeathafter = " ";
 	
 	public static void GetMainValues() {
 		
 		SaveTimer = plugin.getConfig().getLong("SaveTimer");
+		timeseporator = plugin.getConfig().getString("TimeSeporator");
 		killbefore = plugin.getConfig().getString("KillBeforeText");
 		killafter = plugin.getConfig().getString("KillAfterText");
 		timebefore = plugin.getConfig().getString("TimeBeforeText");
