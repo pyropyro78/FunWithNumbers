@@ -1,5 +1,5 @@
 SaveTimer: 200
-TimeSeporator ' : '
+TimeSeporator: ' : '
 KillBeforeText: 'Number of kills: '
 KillAfterText: '. '
 TimeBeforeText: 'Time played: '
