@@ -79,27 +79,59 @@ public class FunWithNumbers extends JavaPlugin implements Listener {
 		} else {
 
 			NumberCruncher.joins.put(p, 1);
+
+		}
+		if (!NumberCruncher.hasBrokenBlocks(p)) {
+
 			NumberCruncher.blocksb.put(p, 0);
+
+		}
+		if (!NumberCruncher.hasPlaceBlocks(p)) {
+
 			NumberCruncher.blocksp.put(p, 0);
+
+		}
+		if (!NumberCruncher.hasPVPDied(p)) {
+
+			NumberCruncher.pvpdeaths.put(p, 0);
+
+		}
+		if (!NumberCruncher.hasDied(p)) {
+
 			NumberCruncher.deaths.put(p, 0);
+
+		}
+		if (!NumberCruncher.hasKilled(p)) {
+
 			NumberCruncher.kills.put(p, 0);
+
+		}
+		if (!NumberCruncher.hasPlaytime(p)) {
+
 			NumberCruncher.playtime.put(p, 0);
 
 		}
+
+
 
 	}
 
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent e) {
+
+		Player victim = e.getEntity();
+
 		if (e.getEntity().getKiller() instanceof Player) {
-			Player victim = e.getEntity();
+
 			Player killer = e.getEntity().getKiller();
 
-			NumberCruncher.addDeath(victim.getName());
+			NumberCruncher.addPVPDeath(victim.getName());
 			NumberCruncher.addKill(killer.getName());
 
-			return;
 		}
+
+		NumberCruncher.addDeath(victim.getName());
+
 		return;
 
 	}

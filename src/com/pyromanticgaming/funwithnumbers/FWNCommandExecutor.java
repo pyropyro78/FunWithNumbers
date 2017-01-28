@@ -30,13 +30,14 @@ public class FWNCommandExecutor implements CommandExecutor {
 			if (args.length > 0) {
 				if (args[0].equalsIgnoreCase("stats")) {
 					if ((args.length == 1) && sender instanceof Player) {
-						
+
 						if (!canCheckSelf) {
 							sender.sendMessage("Fun With Numbers - You lack permissions for that.");
 							return true;
 						}
-						
-						sender.sendMessage(MainConfig.pvpdeathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.deaths.get(senderstring) + MainConfig.pvpdeathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+
+						sender.sendMessage(MainConfig.pvpdeathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.pvpdeaths.get(senderstring) + MainConfig.pvpdeathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+						sender.sendMessage(MainConfig.deathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.deaths.get(senderstring) + MainConfig.deathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 						sender.sendMessage(MainConfig.killbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.kills.get(senderstring) + MainConfig.killafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 						sender.sendMessage(MainConfig.blockbbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksb.get(senderstring) + MainConfig.blockbafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 						sender.sendMessage(MainConfig.blockpbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksp.get(senderstring) + MainConfig.blockpafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
@@ -48,24 +49,24 @@ public class FWNCommandExecutor implements CommandExecutor {
 						Integer PlayTimeMin = (int) Math.floor(PlayTimeSec / 60); // gets min rounds down
 						PlayTimeSec = PlayTimeSec - (PlayTimeMin * 60); // subtracts mins seconds
 
-						String PlayTime = PlayTimeHour + MainConfig.timeseporator + PlayTimeMin + MainConfig.timeseporator + PlayTimeSec;
+						sender.sendMessage(MainConfig.timebefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeHour + MainConfig.timeseporator.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeMin + MainConfig.timeseporator.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeSec + MainConfig.timeafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 
-						sender.sendMessage(MainConfig.timebefore + PlayTime + MainConfig.timeafter);
 						return true;
 					}
 					if (args.length == 2) {
-						
+
 						if (!canCheckOther) {
 							sender.sendMessage("Fun With Numbers - You lack permissions for that.");
 							return true;
 						}
 
 						if (NumberCruncher.hasJoined(args[1])) {
-							sender.sendMessage(MainConfig.pvpdeathbefore + NumberCruncher.deaths.get(args[1]) + MainConfig.pvpdeathafter);
-							sender.sendMessage(MainConfig.killbefore + NumberCruncher.kills.get(args[1]) + MainConfig.killafter);
-							sender.sendMessage(MainConfig.blockbbefore + NumberCruncher.blocksb.get(args[1]) + MainConfig.blockbafter);
-							sender.sendMessage(MainConfig.blockpbefore + NumberCruncher.blocksp.get(args[1]) + MainConfig.blockpafter);
-							sender.sendMessage(MainConfig.joinbefore + NumberCruncher.joins.get(args[1]) + MainConfig.joinafter);
+							sender.sendMessage(MainConfig.pvpdeathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.pvpdeaths.get(args[1]) + MainConfig.pvpdeathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+							sender.sendMessage(MainConfig.deathbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.deaths.get(args[1]) + MainConfig.deathafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+							sender.sendMessage(MainConfig.killbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.kills.get(args[1]) + MainConfig.killafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+							sender.sendMessage(MainConfig.blockbbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksb.get(args[1]) + MainConfig.blockbafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+							sender.sendMessage(MainConfig.blockpbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.blocksp.get(args[1]) + MainConfig.blockpafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
+							sender.sendMessage(MainConfig.joinbefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + NumberCruncher.joins.get(args[1]) + MainConfig.joinafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 
 							Integer PlayTimeSec = NumberCruncher.playtime.get(args[1]);
 							Integer PlayTimeHour = (int) (Math.floor(PlayTimeSec / 60) / 60); // gets hours rounds down
@@ -73,7 +74,7 @@ public class FWNCommandExecutor implements CommandExecutor {
 							Integer PlayTimeMin = (int) Math.floor(PlayTimeSec / 60); // gets min rounds down
 							PlayTimeSec = PlayTimeSec - (PlayTimeMin * 60); // subtracts mins seconds
 
-							sender.sendMessage(MainConfig.timebefore + PlayTimeHour + MainConfig.timeseporator + PlayTimeMin + MainConfig.timeseporator + PlayTimeSec + MainConfig.timeafter);
+							sender.sendMessage(MainConfig.timebefore.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeHour + MainConfig.timeseporator.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeMin + MainConfig.timeseporator.replaceAll("(&([a-f0-9]))", "\u00A7$2") + PlayTimeSec + MainConfig.timeafter.replaceAll("(&([a-f0-9]))", "\u00A7$2"));
 							return true;
 						}
 						sender.sendMessage(MainConfig.playernotfound);
@@ -81,7 +82,7 @@ public class FWNCommandExecutor implements CommandExecutor {
 					}
 
 				}
-				
+
 				if (sender instanceof Player) {
 					sender.sendMessage("Fun With Numbers - Improper command use");
 					sender.sendMessage("/fwn stats - Checks your stats");

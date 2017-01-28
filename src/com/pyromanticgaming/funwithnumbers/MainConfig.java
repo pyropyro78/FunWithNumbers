@@ -16,7 +16,7 @@ public class MainConfig {
 	}
 	
 	public static long SaveTimer = 200;
-	public static String playernotfound = " ", timeseporator = " ", killbefore = " ", killafter = " ", timebefore = " ", timeafter = " ", blockpbefore = " ", blockpafter = " ", blockbbefore = " ", blockbafter = " ", joinbefore = " ", joinafter = " ", pvpdeathbefore = " ", pvpdeathafter = " ";
+	public static String playernotfound = " ", timeseporator = " ", killbefore = " ", killafter = " ", timebefore = " ", timeafter = " ", blockpbefore = " ", blockpafter = " ", blockbbefore = " ", blockbafter = " ", joinbefore = " ", joinafter = " ", pvpdeathbefore = " ", pvpdeathafter = " ", deathbefore = " ", deathafter = " ";
 	
 	public static void GetMainValues() {
 		
@@ -34,6 +34,8 @@ public class MainConfig {
 		joinafter = plugin.getConfig().getString("JoinAfterText");
 		pvpdeathbefore = plugin.getConfig().getString("PVPDeathBeforeText");
 		pvpdeathafter = plugin.getConfig().getString("PVPDeathAfterText");
+		deathbefore = plugin.getConfig().getString("DeathBeforeText");
+		deathafter = plugin.getConfig().getString("DeathAfterText");
 		playernotfound = plugin.getConfig().getString("PlayerNotFound");
 	}
 
