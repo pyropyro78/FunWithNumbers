@@ -1,19 +1,19 @@
-#FunWithNumbers
+# FunWithNumbers
 ### Bukkit / Spigot / Minecraft / Server Plugin
 
 This plugin will help monitor and log stats about players and their activities on a server.
 
-####Permissions:
+#### Permissions:
 FunWithNumbers.check.self - Allows sender to see their own stats.
 
 FunWithNumbers.check.other - Allows sender to see the stats of another
 
-####Commands:
+#### Commands:
 /fwn stats - Checks your stats
 
 /fwn stats  [Player] - Checks a player's stats
 
-####Features:
+#### Features:
 Records number of blocks broken.
 
 Records number of blocks placed.
@@ -30,7 +30,7 @@ Keeps track of time player has been on the server.
 
 Stat for time in game is displayed in H : M : S
 
-####Known issues
+#### Known issues
 Currently sever must be off when config is modified in order to have changes work.
 
 Names are case sensitive.
